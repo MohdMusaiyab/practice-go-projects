@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ .Title }} | Musaiyab - Full Stack Developer</title>
+    <link rel="stylesheet" href="/static/css/home.css">
+    <link rel="stylesheet" href="/static/css/header.css">
+    <link rel="stylesheet" href="/static/css/footer.css">
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&family=Ubuntu+Mono:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    {{template "header.html" .}}
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <section class="education-section">
+                <h1>Education</h1>
+                <div class="education-timeline">
+                    <div class="education-item">
+                        <div class="education-year">2020 - 2024</div>
+                        <div class="education-content">
+                            <h2>Bachelor of Technology in Computer Science</h2>
+                            <p class="education-institution">Example University</p>
+                            <p class="education-description">
+                                Focused on software development, algorithms, and database management. 
+                                Participated in various coding competitions and hackathons.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="education-item">
+                        <div class="education-year">2023</div>
+                        <div class="education-content">
+                            <h2>Full Stack Web Development Certification</h2>
+                            <p class="education-institution">Online Learning Platform</p>
+                            <p class="education-description">
+                                Completed an intensive program covering modern web development technologies including 
+                                React, Node.js, and Go.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="education-item">
+                        <div class="education-year">2022</div>
+                        <div class="education-content">
+                            <h2>Advanced Linux Administration</h2>
+                            <p class="education-institution">Linux Foundation</p>
+                            <p class="education-description">
+                                Learned system administration, security best practices, and server management.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    {{template "footer.html" .}}
+</body>
+</html>

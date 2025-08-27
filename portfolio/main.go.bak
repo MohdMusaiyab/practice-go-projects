@@ -6,17 +6,17 @@ import (
 	"net/http"
 )
 
-// Template for our pages
-var tmpl *template.Template
+// Define a template set for our pages
+var templates *template.Template
 
 // Data to pass to templates
-type TemplateData struct {
+type PageData struct {
 	Title string
 }
 
 func init() {
-	// Parse all templates at once
-	tmpl = template.Must(template.ParseGlob("templates/*.html"))
+	// Parse all templates at once (including header and footer)
+	templates = template.Must(template.ParseGlob("templates/*.html"))
 }
 
 // Handler functions for different routes
@@ -48,18 +48,18 @@ func experience(w http.ResponseWriter, r *http.Request) {
 	renderTemplate(w, "experience.html", "Experience")
 }
 
-// Render a template
-func renderTemplate(w http.ResponseWriter, tmplName string, title string) {
-	err := tmpl.ExecuteTemplate(w, tmplName, TemplateData{Title: title})
+// Render a template with header and footer
+func renderTemplate(w http.ResponseWriter, tmpl string, title string) {
+	err := templates.ExecuteTemplate(w, tmpl, PageData{Title: title})
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 	}
 }
 
 func main() {
-	// Serve static files properly with path stripping
+	// Serve static files from directory with proper path stripping
 	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("static"))))
-
+	
 	// Route handlers for all pages
 	http.HandleFunc("/", home)
 	http.HandleFunc("/about.html", about)

@@ -1,198 +1,119 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Developer Portfolio - Home</title>
-    <link href="/static/css/home.css" rel="stylesheet" />
-  </head>
-  <body>
-    <!-- Boot sequence -->
-    <div class="boot-sequence" id="bootSequence">
-      <div class="ubuntu-logo-boot">🐧</div>
-      <div class="boot-text">Starting portfolio system...</div>
-      <div class="boot-text">Loading Musaiyab's profile...</div>
-      <div class="boot-text">Mounting skills filesystem...</div>
-      <div class="boot-text">Initializing contact protocols...</div>
-      <div class="boot-text">System ready. Welcome!</div>
-    </div>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ .Title }} | Musaiyab - Full Stack Developer</title>
+    <link rel="stylesheet" href="/static/css/home.css">
+    <link rel="stylesheet" href="/static/css/header.css">
+    <link rel="stylesheet" href="/static/css/footer.css">
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&family=Ubuntu+Mono:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    {{template "header.html" .}}
 
-    <!-- Floating Ubuntu elements -->
-    <div class="floating-logo">🐧</div>
-    <div class="floating-logo">⚙️</div>
-    <div class="floating-logo">💻</div>
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <section class="hero-section">
+                <div class="terminal-window">
+                    <div class="terminal-header">
+                        <div class="terminal-controls">
+                            <span class="control-btn close"></span>
+                            <span class="control-btn minimize"></span>
+                            <span class="control-btn maximize"></span>
+                        </div>
+                        <div class="terminal-title">musaiyab@portfolio:~$</div>
+                    </div>
+                    <div class="terminal-content">
+                        <div class="command-line">
+                            <span class="prompt">user@portfolio:~$</span>
+                            <span class="command">whoami</span>
+                        </div>
+                        <div class="output">
+                            <h1>Musaiyab</h1>
+                            <p class="subtitle">Full Stack Developer | Linux Enthusiast</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
-    <header>
-      <div class="terminal-bar">
-        <div class="terminal-buttons">
-          <div class="terminal-btn close"></div>
-          <div class="terminal-btn minimize"></div>
-          <div class="terminal-btn maximize"></div>
+            <section class="intro-section">
+                <div class="intro-card">
+                    <h2>Hello, World! 👋</h2>
+                    <p>I'm a passionate developer who builds modern web applications with the reliability of Linux and the elegance of clean code. Welcome to my digital workspace!</p>
+                    <div class="tech-stack">
+                        <span class="tech-badge">JavaScript</span>
+                        <span class="tech-badge">React</span>
+                        <span class="tech-badge">Node.js</span>
+                        <span class="tech-badge">Go</span>
+                    </div>
+                </div>
+            </section>
         </div>
-        <div class="terminal-title">musaiyab@portfolio: ~</div>
-      </div>
-      <div class="header-content">
-        <div class="terminal-prompt">user@portfolio:~$</div>
-        <h1>Musaiyab</h1>
-        <p>Full Stack Developer | Linux Enthusiast | Open Source Contributor</p>
-        <div class="command-line" id="commandLine">
-          ./run_portfolio.sh --mode=awesome
-        </div>
-      </div>
-    </header>
+    </main>
 
-    <div class="container">
-      <div class="ubuntu-window intro">
-        <div class="window-header">
-          <div class="window-title">
-            <i class="fas fa-user"></i>
-            About Me
-          </div>
-          <div class="window-controls">
-            <div class="control-btn minimize"></div>
-            <div class="control-btn maximize"></div>
-            <div class="control-btn close"></div>
-          </div>
-        </div>
-        <div class="window-content">
-          <p>
-            Hello! I'm Musaiyab, a passionate developer who believes in the
-            power of open source and the elegance of Linux systems. I specialize
-            in building robust web applications that are as reliable as your
-            favorite Linux distribution. Welcome to my digital workspace where
-            innovation meets stability!
-          </p>
-        </div>
-      </div>
+    {{template "footer.html" .}}
+    
+    <script>
+    // Initialize page animations
+    document.addEventListener('DOMContentLoaded', function() {
+        // Simple typewriter effect for command
+        const commandElement = document.querySelector('.command');
+        if (commandElement) {
+            const originalText = commandElement.textContent;
+            commandElement.textContent = '';
+            
+            let i = 0;
+            const typeInterval = setInterval(() => {
+                if (i < originalText.length) {
+                    commandElement.textContent += originalText.charAt(i);
+                    i++;
+                } else {
+                    clearInterval(typeInterval);
+                }
+            }, 100);
+        }
 
-      <div class="ubuntu-window skills">
-        <div class="window-header">
-          <div class="window-title">
-            <i class="fas fa-download"></i>
-            Installed Packages
-          </div>
-          <div class="window-controls">
-            <div class="control-btn minimize"></div>
-            <div class="control-btn maximize"></div>
-            <div class="control-btn close"></div>
-          </div>
-        </div>
-        <div class="window-content">
-          <div class="skills-grid">
-            <div class="skill-package" data-package="html5">
-              <div class="package-header">
-                <i class="fab fa-html5"></i>
-                <span class="package-name">html5-dev</span>
-                <span class="package-version">v5.0</span>
-              </div>
-              <div>Semantic markup language for web structure</div>
-              <div class="install-cmd">$ sudo apt install html5-dev</div>
-            </div>
+        // Fade in intro card
+        const introCard = document.querySelector('.intro-card');
+        if (introCard) {
+            introCard.style.opacity = '0';
+            introCard.style.transform = 'translateY(30px)';
+            introCard.style.transition = 'all 0.8s ease-out';
+            
+            setTimeout(() => {
+                introCard.style.opacity = '1';
+                introCard.style.transform = 'translateY(0)';
+            }, 500);
+        }
+        
+        // Tech badge hover effects
+        document.addEventListener('click', function(e) {
+            if (e.target.classList.contains('tech-badge')) {
+                const badge = e.target;
+                const originalText = badge.textContent;
+                
+                badge.textContent = '✓ Selected';
+                badge.style.background = 'var(--terminal-green)';
+                badge.style.color = 'var(--ubuntu-dark)';
+                
+                setTimeout(() => {
+                    badge.textContent = originalText;
+                    badge.style.background = 'var(--ubuntu-orange)';
+                    badge.style.color = 'white';
+                }, 1000);
+            }
+        });
 
-            <div class="skill-package" data-package="css3">
-              <div class="package-header">
-                <i class="fab fa-css3-alt"></i>
-                <span class="package-name">css3-tools</span>
-                <span class="package-version">v3.0</span>
-              </div>
-              <div>Advanced styling and responsive design</div>
-              <div class="install-cmd">$ sudo apt install css3-tools</div>
-            </div>
-
-            <div class="skill-package" data-package="javascript">
-              <div class="package-header">
-                <i class="fab fa-js-square"></i>
-                <span class="package-name">javascript-engine</span>
-                <span class="package-version">ES2023</span>
-              </div>
-              <div>Dynamic programming language for web</div>
-              <div class="install-cmd">$ sudo apt install nodejs npm</div>
-            </div>
-
-            <div class="skill-package" data-package="golang">
-              <div class="package-header">
-                <i class="fab fa-golang"></i>
-                <span class="package-name">golang-compiler</span>
-                <span class="package-version">v1.21</span>
-              </div>
-              <div>Efficient systems programming language</div>
-              <div class="install-cmd">$ sudo apt install golang-go</div>
-            </div>
-
-            <div class="skill-package" data-package="react">
-              <div class="package-header">
-                <i class="fab fa-react"></i>
-                <span class="package-name">react-framework</span>
-                <span class="package-version">v18.2</span>
-              </div>
-              <div>Component-based UI library</div>
-              <div class="install-cmd">$ npm install react react-dom</div>
-            </div>
-
-            <div class="skill-package" data-package="nodejs">
-              <div class="package-header">
-                <i class="fab fa-node-js"></i>
-                <span class="package-name">nodejs-runtime</span>
-                <span class="package-version">v20.0</span>
-              </div>
-              <div>Server-side JavaScript runtime</div>
-              <div class="install-cmd">$ sudo apt install nodejs npm</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="ubuntu-window contact">
-        <div class="window-header">
-          <div class="window-title">
-            <i class="fas fa-terminal"></i>
-            Contact Interface
-          </div>
-          <div class="window-controls">
-            <div class="control-btn minimize"></div>
-            <div class="control-btn maximize"></div>
-            <div class="control-btn close"></div>
-          </div>
-        </div>
-        <div class="window-content">
-          <div class="contact-info" id="contactInfo">musaiyab@example.com</div>
-        </div>
-      </div>
-    </div>
-
-    <footer>
-      <div class="footer-command">
-        $ echo "© 2024 Musaiyab - Built with 🐧 and ❤️"
-      </div>
-      <div>Powered by Ubuntu | Open Source | Terminal Life</div>
-    </footer>
-    <header>
-      <h1>Musaiyab's Portfolio</h1>
-      <p>Full Stack Developer | Web Enthusiast</p>
-    </header>
-    <div class="container">
-      <div class="intro">
-        <p>
-          Hello! I'm Musaiyab, a passionate developer specializing in building
-          modern web applications. Welcome to my portfolio!
-        </p>
-      </div>
-      <section class="skills">
-        <h2>Skills</h2>
-        <ul>
-          <li>HTML</li>
-          <li>CSS</li>
-          <li>JavaScript</li>
-          <li>Go</li>
-          <li>React</li>
-          <li>Node.js</li>
-        </ul>
-      </section>
-      <section>
-        <h2>Contact</h2>
-        <p>Email: musaiyab@example.com</p>
-      </section>
-    </div>
-    <footer>&copy; 2024 Musaiyab. All rights reserved.</footer>
-  </body>
-  <script src="static/js/home.js"></script>
+        // Simple terminal blink effect
+        setInterval(() => {
+            const prompt = document.querySelector('.prompt');
+            if (prompt) {
+                prompt.style.opacity = prompt.style.opacity === '0.5' ? '1' : '0.5';
+            }
+        }, 1000);
+    });
+    </script>
+</body>
 </html>

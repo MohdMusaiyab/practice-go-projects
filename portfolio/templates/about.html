@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ .Title }} | Musaiyab - Full Stack Developer</title>
+    <link rel="stylesheet" href="/static/css/home.css">
+    <link rel="stylesheet" href="/static/css/header.css">
+    <link rel="stylesheet" href="/static/css/footer.css">
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&family=Ubuntu+Mono:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    {{template "header.html" .}}
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <section class="about-section">
+                <h1>About Me</h1>
+                <div class="about-content">
+                    <p>Welcome to my portfolio! I'm a passionate Full Stack Developer with expertise in modern web technologies and a strong foundation in Linux systems.</p>
+                    
+                    <h2>My Journey</h2>
+                    <p>My journey in software development started with a curiosity about how computers work. This led me to explore Linux, where I developed a deep appreciation for open-source software and the power of community-driven development.</p>
+                    
+                    <h2>My Approach</h2>
+                    <p>I believe in building software that is not only functional but also maintainable and scalable. My approach combines technical excellence with a focus on delivering real value to users.</p>
+                    
+                    <h2>When I'm Not Coding</h2>
+                    <p>Outside of coding, I enjoy exploring new technologies, contributing to open-source projects, and sharing knowledge with the community.</p>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    {{template "footer.html" .}}
+</body>
+</html>

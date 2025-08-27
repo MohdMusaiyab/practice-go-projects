@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ .Title }} | Musaiyab - Full Stack Developer</title>
+    <link rel="stylesheet" href="/static/css/home.css">
+    <link rel="stylesheet" href="/static/css/header.css">
+    <link rel="stylesheet" href="/static/css/footer.css">
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&family=Ubuntu+Mono:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    {{template "header.html" .}}
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <section class="experience-section">
+                <h1>Work Experience</h1>
+                <div class="experience-timeline">
+                    <div class="experience-item">
+                        <div class="experience-year">2024 - Present</div>
+                        <div class="experience-content">
+                            <h2>Full Stack Developer</h2>
+                            <p class="experience-company">Tech Solutions Inc.</p>
+                            <ul class="experience-duties">
+                                <li>Developing and maintaining web applications using React and Go</li>
+                                <li>Implementing RESTful APIs and microservices architecture</li>
+                                <li>Collaborating with UX designers to create intuitive user interfaces</li>
+                                <li>Optimizing application performance and database queries</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="experience-item">
+                        <div class="experience-year">2022 - 2024</div>
+                        <div class="experience-content">
+                            <h2>Frontend Developer</h2>
+                            <p class="experience-company">Web Innovations Ltd.</p>
+                            <ul class="experience-duties">
+                                <li>Built responsive web interfaces using HTML, CSS, and JavaScript</li>
+                                <li>Developed interactive components with React and state management libraries</li>
+                                <li>Implemented CI/CD pipelines for frontend deployments</li>
+                                <li>Mentored junior developers and conducted code reviews</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="experience-item">
+                        <div class="experience-year">2021 - 2022</div>
+                        <div class="experience-content">
+                            <h2>Software Development Intern</h2>
+                            <p class="experience-company">StartUp Tech</p>
+                            <ul class="experience-duties">
+                                <li>Assisted in developing features for a SaaS product</li>
+                                <li>Fixed bugs and implemented UI improvements</li>
+                                <li>Participated in daily stand-ups and sprint planning</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    {{template "footer.html" .}}
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ .Title }} | Musaiyab - Full Stack Developer</title>
+    <link rel="stylesheet" href="/static/css/home.css">
+    <link rel="stylesheet" href="/static/css/header.css">
+    <link rel="stylesheet" href="/static/css/footer.css">
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&family=Ubuntu+Mono:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    {{template "header.html" .}}
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <section class="skills-section">
+                <h1>My Skills</h1>
+                <div class="skills-content">
+                    <div class="skill-category">
+                        <h2>Frontend</h2>
+                        <div class="skill-list">
+                            <div class="skill-item">
+                                <span class="skill-name">HTML/CSS</span>
+                                <div class="skill-bar">
+                                    <div class="skill-level" style="width: 95%;"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <span class="skill-name">JavaScript</span>
+                                <div class="skill-bar">
+                                    <div class="skill-level" style="width: 90%;"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <span class="skill-name">React</span>
+                                <div class="skill-bar">
+                                    <div class="skill-level" style="width: 85%;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h2>Backend</h2>
+                        <div class="skill-list">
+                            <div class="skill-item">
+                                <span class="skill-name">Go</span>
+                                <div class="skill-bar">
+                                    <div class="skill-level" style="width: 80%;"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <span class="skill-name">Node.js</span>
+                                <div class="skill-bar">
+                                    <div class="skill-level" style="width: 88%;"></div>
+                                </div>
+                            </div>
+                            <div class="skill-item">
+                                <span class="skill-name">SQL</span>
+                                <div class="skill-bar">
+                                    <div class="skill-level" style="width: 82%;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    {{template "footer.html" .}}
+</body>
+</html>

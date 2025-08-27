@@ -1,0 +1,56 @@
+<footer class="main-footer">
+    <div class="footer-container">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <span class="ubuntu-logo">🐧</span>
+                <span class="brand-text">Musaiyab</span>
+            </div>
+            <div class="footer-info">
+                <p>&copy; 2024 Musaiyab. Built with Ubuntu vibes.</p>
+                <div class="system-info">
+                    <span class="info-item">Status: Online</span>
+                    <span class="info-item">Uptime: 24/7</span>
+                    <span class="info-item">Version: 1.0.0</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script>
+// Initialize page animations
+document.addEventListener('DOMContentLoaded', function() {
+    // Tech badge hover effects
+    document.addEventListener('click', function(e) {
+        if (e.target.classList.contains('tech-badge')) {
+            const badge = e.target;
+            const originalText = badge.textContent;
+            
+            badge.textContent = '✓ Selected';
+            badge.style.background = 'var(--terminal-green)';
+            badge.style.color = 'var(--ubuntu-dark)';
+            
+            setTimeout(() => {
+                badge.textContent = originalText;
+                badge.style.background = 'var(--ubuntu-orange)';
+                badge.style.color = 'white';
+            }, 1000);
+        }
+    });
+
+    // Simple terminal blink effect
+    setInterval(() => {
+        const prompt = document.querySelector('.prompt');
+        if (prompt) {
+            prompt.style.opacity = prompt.style.opacity === '0.5' ? '1' : '0.5';
+        }
+    }, 1000);
+
+    // Initialize page-specific animations if they exist
+    if (typeof initializeAnimations === 'function') {
+        initializeAnimations();
+    }
+});
+</script>
+</body>
+</html>

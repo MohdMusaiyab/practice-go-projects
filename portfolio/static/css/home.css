@@ -1,568 +1,235 @@
+/* Ubuntu Theme Variables */
 :root {
-  --ubuntu-orange: #e95420;
-  --ubuntu-purple: #772953;
-  --ubuntu-dark: #2c001e;
-  --ubuntu-light: #aea79f;
-  --ubuntu-white: #ffffff;
-  --terminal-green: #00ff00;
-  --terminal-bg: #300a24;
-  --terminal-text: #ffffff;
-  --canonical-aubergine: #77216f;
-  --warm-grey: #aea79f;
-  --cool-grey: #333333;
+    --ubuntu-orange: #E95420;
+    --ubuntu-purple: #772953;
+    --ubuntu-dark: #2C001E;
+    --ubuntu-light-grey: #F7F7F7;
+    --ubuntu-warm-grey: #AEA79F;
+    --ubuntu-cool-grey: #333333;
+    --terminal-bg: #300A24;
+    --terminal-green: #00FF00;
+    --text-primary: #2C001E;
+    --text-secondary: #772953;
 }
 
+/* Reset and Base Styles */
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-  font-family: "Ubuntu", sans-serif;
-  background: linear-gradient(
-    135deg,
-    var(--ubuntu-dark) 0%,
-    var(--terminal-bg) 50%,
-    #1a0011 100%
-  );
-  color: var(--ubuntu-white);
-  line-height: 1.6;
-  overflow-x: hidden;
-  min-height: 100vh;
+    font-family: 'Ubuntu', sans-serif;
+    line-height: 1.6;
+    background: var(--ubuntu-light-grey);
+    color: var(--text-primary);
 }
 
-/* Animated grid background */
-body::before {
-  content: "";
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: linear-gradient(rgba(233, 84, 32, 0.1) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(233, 84, 32, 0.1) 1px, transparent 1px);
-  background-size: 50px 50px;
-  animation: gridMove 20s linear infinite;
-  z-index: -1;
-}
-
-@keyframes gridMove {
-  0% {
-    transform: translate(0, 0);
-  }
-  100% {
-    transform: translate(50px, 50px);
-  }
-}
-
-/* Terminal-style header */
-header {
-  background: var(--terminal-bg);
-  border: 2px solid var(--ubuntu-orange);
-  border-radius: 8px 8px 0 0;
-  margin: 20px;
-  box-shadow: 0 0 20px rgba(233, 84, 32, 0.3);
-  position: relative;
-  overflow: hidden;
-}
-
-.terminal-bar {
-  background: linear-gradient(
-    90deg,
-    var(--ubuntu-orange),
-    var(--canonical-aubergine)
-  );
-  padding: 10px 15px;
-  display: flex;
-  align-items: center;
-  border-bottom: 1px solid var(--ubuntu-orange);
-}
-
-.terminal-buttons {
-  display: flex;
-  gap: 8px;
-}
-
-.terminal-btn {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-}
-
-.terminal-btn.close {
-  background: #ff5f57;
-}
-.terminal-btn.minimize {
-  background: #ffbd2e;
-}
-.terminal-btn.maximize {
-  background: #28ca42;
-}
-
-.terminal-title {
-  flex-grow: 1;
-  text-align: center;
-  font-family: "Ubuntu Mono", monospace;
-  font-weight: bold;
-  color: var(--ubuntu-white);
-}
-
-.header-content {
-  padding: 2rem;
-  font-family: "Ubuntu Mono", monospace;
-}
-
-.terminal-prompt {
-  color: var(--terminal-green);
-  font-size: 1rem;
-  margin-bottom: 10px;
-}
-
-header h1 {
-  font-size: 2.5rem;
-  color: var(--ubuntu-orange);
-  margin-bottom: 0.5rem;
-  text-shadow: 0 0 10px rgba(233, 84, 32, 0.5);
-}
-
-header p {
-  color: var(--warm-grey);
-  font-size: 1.2rem;
-  margin-bottom: 1rem;
-}
-
-.command-line {
-  background: rgba(0, 0, 0, 0.3);
-  padding: 10px 15px;
-  border-left: 3px solid var(--terminal-green);
-  font-family: "Ubuntu Mono", monospace;
-  color: var(--terminal-green);
-  animation: typing 3s steps(40, end), blink-caret 0.75s step-end infinite;
-  overflow: hidden;
-  white-space: nowrap;
-  border-right: 2px solid var(--terminal-green);
-  width: fit-content;
-}
-
-@keyframes typing {
-  from {
-    width: 0;
-  }
-  to {
-    width: 100%;
-  }
-}
-
-@keyframes blink-caret {
-  from,
-  to {
-    border-color: transparent;
-  }
-  50% {
-    border-color: var(--terminal-green);
-  }
-}
-
-/* Container */
 .container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
 }
 
-/* Ubuntu-style windows */
-.ubuntu-window {
-  background: rgba(255, 255, 255, 0.95);
-  color: var(--cool-grey);
-  border-radius: 8px;
-  margin-bottom: 2rem;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-  overflow: hidden;
-  transform: translateY(50px);
-  opacity: 0;
-  animation: windowSlideIn 0.8s ease-out forwards;
+/* Main Content */
+.main-content {
+    min-height: calc(100vh - 160px);
+    padding: 2rem 0;
 }
 
-.ubuntu-window:nth-child(1) {
-  animation-delay: 0.2s;
-}
-.ubuntu-window:nth-child(2) {
-  animation-delay: 0.4s;
-}
-.ubuntu-window:nth-child(3) {
-  animation-delay: 0.6s;
+/* Hero Section */
+.hero-section {
+    margin-bottom: 3rem;
 }
 
-@keyframes windowSlideIn {
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
+.terminal-window {
+    background: var(--terminal-bg);
+    border-radius: 8px;
+    box-shadow: 0 8px 25px rgba(44, 0, 30, 0.2);
+    overflow: hidden;
+    max-width: 800px;
+    margin: 0 auto;
 }
 
-.window-header {
-  background: linear-gradient(
-    90deg,
-    var(--ubuntu-orange),
-    var(--canonical-aubergine)
-  );
-  color: white;
-  padding: 12px 20px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+.terminal-header {
+    background: linear-gradient(90deg, var(--ubuntu-orange), var(--ubuntu-purple));
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
-.window-title {
-  font-weight: 500;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.window-controls {
-  display: flex;
-  gap: 8px;
+.terminal-controls {
+    display: flex;
+    gap: 8px;
 }
 
 .control-btn {
-  width: 16px;
-  height: 16px;
-  border-radius: 50%;
-  cursor: pointer;
-  transition: transform 0.2s;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: opacity 0.2s;
 }
 
 .control-btn:hover {
-  transform: scale(1.2);
+    opacity: 0.8;
 }
 
-.control-btn.close {
-  background: #ff5f57;
-}
-.control-btn.minimize {
-  background: #ffbd2e;
-}
-.control-btn.maximize {
-  background: #28ca42;
+.control-btn.close { background: #FF5F57; }
+.control-btn.minimize { background: #FFBD2E; }
+.control-btn.maximize { background: #28CA42; }
+
+.terminal-title {
+    color: white;
+    font-family: 'Ubuntu Mono', monospace;
+    font-weight: 700;
 }
 
-.window-content {
-  padding: 2rem;
+.terminal-content {
+    padding: 30px;
+    font-family: 'Ubuntu Mono', monospace;
+}
+
+.command-line {
+    margin-bottom: 20px;
+    font-size: 16px;
+}
+
+.prompt {
+    color: var(--terminal-green);
+}
+
+.command {
+    color: white;
+    margin-left: 10px;
+}
+
+.output h1 {
+    color: var(--ubuntu-orange);
+    font-size: 3rem;
+    margin-bottom: 10px;
+    font-weight: 500;
+}
+
+.output .subtitle {
+    color: var(--ubuntu-warm-grey);
+    font-size: 1.3rem;
 }
 
 /* Intro Section */
-.intro .window-content {
-  font-size: 1.1rem;
-  text-align: center;
-  line-height: 1.8;
+.intro-section {
+    margin-bottom: 2rem;
 }
 
-.intro .window-content::before {
-  content: "$ cat about.txt";
-  display: block;
-  font-family: "Ubuntu Mono", monospace;
-  color: var(--ubuntu-orange);
-  margin-bottom: 1rem;
-  font-weight: bold;
+.intro-card {
+    background: white;
+    padding: 2.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(44, 0, 30, 0.1);
+    border-left: 4px solid var(--ubuntu-orange);
+    max-width: 800px;
+    margin: 0 auto;
 }
 
-/* Skills Section */
-.skills-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1.5rem;
-  margin-top: 1rem;
+.intro-card h2 {
+    color: var(--ubuntu-purple);
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    font-weight: 500;
 }
 
-.skill-package {
-  background: var(--terminal-bg);
-  color: var(--ubuntu-white);
-  border: 1px solid var(--ubuntu-orange);
-  border-radius: 6px;
-  padding: 1.5rem;
-  font-family: "Ubuntu Mono", monospace;
-  transition: all 0.3s ease;
-  cursor: pointer;
-  position: relative;
-  overflow: hidden;
+.intro-card p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--text-primary);
+    margin-bottom: 1.5rem;
 }
 
-.skill-package::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 2px;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    var(--ubuntu-orange),
-    transparent
-  );
-  animation: scanLine 2s linear infinite;
+.tech-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 1.5rem;
 }
 
-@keyframes scanLine {
-  0% {
-    left: -100%;
-  }
-  100% {
-    left: 100%;
-  }
+.tech-badge {
+    background: var(--ubuntu-orange);
+    color: white;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: background 0.3s ease;
 }
 
-.skill-package:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 25px rgba(233, 84, 32, 0.4);
-  border-color: var(--terminal-green);
-}
-
-.package-header {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 10px;
-  color: var(--terminal-green);
-}
-
-.package-name {
-  font-weight: bold;
-  color: var(--ubuntu-orange);
-}
-
-.package-version {
-  color: var(--warm-grey);
-  font-size: 0.9rem;
-}
-
-.install-cmd {
-  background: rgba(0, 0, 0, 0.5);
-  padding: 8px 12px;
-  border-radius: 4px;
-  font-size: 0.85rem;
-  color: var(--terminal-green);
-  margin-top: 10px;
-  border-left: 3px solid var(--ubuntu-orange);
-}
-
-/* Skills header with terminal command */
-.skills .window-content::before {
-  content: "$ apt list --installed | grep development";
-  display: block;
-  font-family: "Ubuntu Mono", monospace;
-  color: var(--ubuntu-orange);
-  margin-bottom: 1.5rem;
-  font-weight: bold;
-}
-
-/* Contact Section */
-.contact .window-content {
-  text-align: center;
-}
-
-.contact .window-content::before {
-  content: "$ whoami && echo $CONTACT_INFO";
-  display: block;
-  font-family: "Ubuntu Mono", monospace;
-  color: var(--ubuntu-orange);
-  margin-bottom: 1.5rem;
-  font-weight: bold;
-}
-
-.contact-info {
-  background: var(--terminal-bg);
-  color: var(--terminal-green);
-  padding: 1.5rem;
-  border-radius: 6px;
-  border: 1px solid var(--ubuntu-orange);
-  font-family: "Ubuntu Mono", monospace;
-  display: inline-block;
-  margin-top: 1rem;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  position: relative;
-}
-
-.contact-info:hover {
-  background: var(--ubuntu-orange);
-  color: var(--ubuntu-white);
-  transform: scale(1.05);
-}
-
-.contact-info::before {
-  content: "> ";
-  color: var(--terminal-green);
-}
-
-/* Footer */
-footer {
-  background: var(--terminal-bg);
-  border: 2px solid var(--ubuntu-orange);
-  border-radius: 0 0 8px 8px;
-  margin: 0 20px 20px 20px;
-  padding: 1.5rem;
-  text-align: center;
-  font-family: "Ubuntu Mono", monospace;
-  border-top: none;
-}
-
-.footer-command {
-  color: var(--terminal-green);
-  margin-bottom: 10px;
-}
-
-/* Floating Ubuntu logos */
-.floating-logo {
-  position: fixed;
-  color: var(--ubuntu-orange);
-  font-size: 2rem;
-  opacity: 0.1;
-  z-index: -1;
-  animation: float 8s ease-in-out infinite;
-}
-
-.floating-logo:nth-child(1) {
-  top: 20%;
-  left: 10%;
-  animation-delay: 0s;
-}
-
-.floating-logo:nth-child(2) {
-  top: 60%;
-  right: 15%;
-  animation-delay: 3s;
-}
-
-.floating-logo:nth-child(3) {
-  bottom: 30%;
-  left: 20%;
-  animation-delay: 6s;
-}
-
-@keyframes float {
-  0%,
-  100% {
-    transform: translateY(0px) rotate(0deg);
-  }
-  25% {
-    transform: translateY(-20px) rotate(5deg);
-  }
-  50% {
-    transform: translateY(-10px) rotate(-5deg);
-  }
-  75% {
-    transform: translateY(-15px) rotate(3deg);
-  }
-}
-
-/* Boot sequence animation */
-.boot-sequence {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: var(--terminal-bg);
-  z-index: 1000;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  font-family: "Ubuntu Mono", monospace;
-  color: var(--terminal-green);
-  transition: opacity 0.5s ease-out;
-}
-
-.boot-sequence.hidden {
-  opacity: 0;
-  pointer-events: none;
-}
-
-.boot-text {
-  margin: 5px 0;
-  opacity: 0;
-  animation: bootLine 0.5s ease-out forwards;
-}
-
-.boot-text:nth-child(1) {
-  animation-delay: 0.5s;
-}
-.boot-text:nth-child(2) {
-  animation-delay: 1s;
-}
-.boot-text:nth-child(3) {
-  animation-delay: 1.5s;
-}
-.boot-text:nth-child(4) {
-  animation-delay: 2s;
-}
-.boot-text:nth-child(5) {
-  animation-delay: 2.5s;
-}
-
-@keyframes bootLine {
-  to {
-    opacity: 1;
-  }
-}
-
-.ubuntu-logo-boot {
-  font-size: 4rem;
-  color: var(--ubuntu-orange);
-  margin-bottom: 2rem;
-  animation: pulse 2s infinite;
-}
-
-@keyframes pulse {
-  0%,
-  100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.7;
-  }
+.tech-badge:hover {
+    background: var(--ubuntu-purple);
+    cursor: pointer;
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
-  header {
-    margin: 10px;
-  }
+    .container {
+        padding: 0 15px;
+    }
 
-  .container {
-    padding: 1rem;
-  }
+    .main-content {
+        padding: 1.5rem 0;
+    }
 
-  .skills-grid {
-    grid-template-columns: 1fr;
-  }
+    .terminal-content {
+        padding: 20px;
+    }
 
-  header h1 {
-    font-size: 2rem;
-  }
+    .output h1 {
+        font-size: 2.2rem;
+    }
 
-  footer {
-    margin: 0 10px 10px 10px;
-  }
+    .output .subtitle {
+        font-size: 1.1rem;
+    }
+
+    .intro-card {
+        padding: 2rem 1.5rem;
+    }
+
+    .intro-card h2 {
+        font-size: 1.6rem;
+    }
+
+    .intro-card p {
+        font-size: 1rem;
+    }
+
+    .tech-stack {
+        justify-content: center;
+    }
 }
 
-/* Scrollbar styling */
-::-webkit-scrollbar {
-  width: 12px;
-}
+@media (max-width: 480px) {
+    .terminal-header {
+        padding: 10px 15px;
+    }
 
-::-webkit-scrollbar-track {
-  background: var(--ubuntu-dark);
-}
+    .terminal-title {
+        font-size: 14px;
+    }
 
-::-webkit-scrollbar-thumb {
-  background: var(--ubuntu-orange);
-  border-radius: 6px;
-}
+    .terminal-content {
+        padding: 15px;
+    }
 
-::-webkit-scrollbar-thumb:hover {
-  background: var(--canonical-aubergine);
+    .command-line {
+        font-size: 14px;
+    }
+
+    .output h1 {
+        font-size: 1.8rem;
+    }
+
+    .intro-card {
+        padding: 1.5rem;
+    }
 }
