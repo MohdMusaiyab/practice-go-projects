@@ -4,7 +4,13 @@ import (
 	"html/template"
 	"log"
 	"net/http"
+	"time"
 )
+
+// DEVELOPMENT MODE TOGGLE
+// Set to true during development to reload templates on every request
+// Set to false for production to use template caching
+const DEVELOPMENT_MODE = true
 
 // Template for our pages
 var tmpl *template.Template
@@ -12,11 +18,18 @@ var tmpl *template.Template
 // Data to pass to templates
 type TemplateData struct {
 	Title string
+	Year  int // Current year for copyright notices
 }
 
 func init() {
-	// Parse all templates at once
+	// Parse all templates at once for initial load
+	loadTemplates()
+}
+
+// Load templates - called on init and optionally on each request in dev mode
+func loadTemplates() {
 	tmpl = template.Must(template.ParseGlob("templates/*.html"))
+	log.Println("Templates loaded")
 }
 
 // Handler functions for different routes
@@ -40,19 +53,24 @@ func skills(w http.ResponseWriter, r *http.Request) {
 	renderTemplate(w, "skills.html", "My Skills")
 }
 
-func education(w http.ResponseWriter, r *http.Request) {
-	renderTemplate(w, "education.html", "Education")
-}
-
-func experience(w http.ResponseWriter, r *http.Request) {
-	renderTemplate(w, "experience.html", "Experience")
-}
-
-// Render a template
+// Render a template with development mode support
 func renderTemplate(w http.ResponseWriter, tmplName string, title string) {
-	err := tmpl.ExecuteTemplate(w, tmplName, TemplateData{Title: title})
+	// In development mode, reload templates on each request
+	if DEVELOPMENT_MODE {
+		loadTemplates()
+	}
+
+	// Create template data with current year
+	data := TemplateData{
+		Title: title,
+		Year:  time.Now().Year(),
+	}
+
+	// Execute template with data
+	err := tmpl.ExecuteTemplate(w, tmplName, data)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
 	}
 }
 
@@ -65,8 +83,6 @@ func main() {
 	http.HandleFunc("/about.html", about)
 	http.HandleFunc("/contact.html", contact)
 	http.HandleFunc("/skills.html", skills)
-	http.HandleFunc("/education.html", education)
-	http.HandleFunc("/experience.html", experience)
 
 	// Start server and listen
 	log.Println("Server starting on http://localhost:8080")

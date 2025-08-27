@@ -26,8 +26,6 @@ func LoadTemplates() {
 		"about.html",
 		"contact.html",
 		"skills.html",
-		"education.html",
-		"experience.html",
 	}
 
 	// Load each template with the common header and footer

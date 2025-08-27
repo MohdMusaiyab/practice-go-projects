@@ -40,14 +40,6 @@ func skills(w http.ResponseWriter, r *http.Request) {
 	renderTemplate(w, "skills.html", "My Skills")
 }
 
-func education(w http.ResponseWriter, r *http.Request) {
-	renderTemplate(w, "education.html", "Education")
-}
-
-func experience(w http.ResponseWriter, r *http.Request) {
-	renderTemplate(w, "experience.html", "Experience")
-}
-
 // Render a template with header and footer
 func renderTemplate(w http.ResponseWriter, tmpl string, title string) {
 	err := templates.ExecuteTemplate(w, tmpl, PageData{Title: title})
@@ -65,8 +57,6 @@ func main() {
 	http.HandleFunc("/about.html", about)
 	http.HandleFunc("/contact.html", contact)
 	http.HandleFunc("/skills.html", skills)
-	http.HandleFunc("/education.html", education)
-	http.HandleFunc("/experience.html", experience)
 
 	// Start server and listen
 	log.Println("Server starting on http://localhost:8080")

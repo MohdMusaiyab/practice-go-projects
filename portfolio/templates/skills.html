@@ -1,75 +1,190 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{{ .Title }} | Musaiyab - Full Stack Developer</title>
-    <link rel="stylesheet" href="/static/css/home.css">
-    <link rel="stylesheet" href="/static/css/header.css">
-    <link rel="stylesheet" href="/static/css/footer.css">
-    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&family=Ubuntu+Mono:wght@400;700&display=swap" rel="stylesheet">
-</head>
-<body>
+    <link rel="stylesheet" href="/static/css/home.css" />
+    <link rel="stylesheet" href="/static/css/header.css" />
+    <link rel="stylesheet" href="/static/css/footer.css" />
+    <link rel="stylesheet" href="/static/css/skills.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&family=Ubuntu+Mono:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
     {{template "header.html" .}}
 
     <!-- Main Content -->
-    <main class="main-content">
-        <div class="container">
-            <section class="skills-section">
-                <h1>My Skills</h1>
-                <div class="skills-content">
-                    <div class="skill-category">
-                        <h2>Frontend</h2>
-                        <div class="skill-list">
-                            <div class="skill-item">
-                                <span class="skill-name">HTML/CSS</span>
-                                <div class="skill-bar">
-                                    <div class="skill-level" style="width: 95%;"></div>
-                                </div>
-                            </div>
-                            <div class="skill-item">
-                                <span class="skill-name">JavaScript</span>
-                                <div class="skill-bar">
-                                    <div class="skill-level" style="width: 90%;"></div>
-                                </div>
-                            </div>
-                            <div class="skill-item">
-                                <span class="skill-name">React</span>
-                                <div class="skill-bar">
-                                    <div class="skill-level" style="width: 85%;"></div>
-                                </div>
-                            </div>
-                        </div>
+    <div class="container">
+      <section class="skills-section">
+        <h1>Skills</h1>
+
+        <div class="terminal-container">
+          <div class="terminal-header">
+            <div class="terminal-controls">
+              <span class="control-btn close"></span>
+              <span class="control-btn minimize"></span>
+              <span class="control-btn maximize"></span>
+            </div>
+            <div class="terminal-title">musaiyab@portfolio:~/skills$</div>
+          </div>
+
+          <div class="terminal-body">
+            <div class="command-line">
+              <span class="prompt">user@portfolio:~$</span>
+              <span class="command">cat skills.txt</span>
+            </div>
+
+            <div class="output">
+              <div class="skills-grid">
+                <div class="skill-category">
+                  <h2>Frontend Technologies</h2>
+                  <div class="skill-item">
+                    <div class="skill-name">
+                      <span>React</span>
+                      <span>82%</span>
                     </div>
-                    
-                    <div class="skill-category">
-                        <h2>Backend</h2>
-                        <div class="skill-list">
-                            <div class="skill-item">
-                                <span class="skill-name">Go</span>
-                                <div class="skill-bar">
-                                    <div class="skill-level" style="width: 80%;"></div>
-                                </div>
-                            </div>
-                            <div class="skill-item">
-                                <span class="skill-name">Node.js</span>
-                                <div class="skill-bar">
-                                    <div class="skill-level" style="width: 88%;"></div>
-                                </div>
-                            </div>
-                            <div class="skill-item">
-                                <span class="skill-name">SQL</span>
-                                <div class="skill-bar">
-                                    <div class="skill-level" style="width: 82%;"></div>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="skill-bar">
+                      <div class="skill-level" data-level="82"></div>
                     </div>
+                  </div>
+                  <div class="skill-item">
+                    <div class="skill-name">
+                      <span>JavaScript</span>
+                      <span>90%</span>
+                    </div>
+                    <div class="skill-bar">
+                      <div class="skill-level" data-level="90"></div>
+                    </div>
+                  </div>
+                  <div class="skill-item">
+                    <div class="skill-name">
+                      <span>TypeScript</span>
+                      <span>85%</span>
+                    </div>
+                    <div class="skill-bar">
+                      <div class="skill-level" data-level="85"></div>
+                    </div>
+                  </div>
+                  <div class="skill-item">
+                    <div class="skill-name">
+                      <span>NEXT.js</span>
+                      <span>80%</span>
+                    </div>
+                    <div class="skill-bar">
+                      <div class="skill-level" data-level="80"></div>
+                    </div>
+                  </div>
                 </div>
-            </section>
+
+                <div class="skill-category">
+                  <h2>Backend Technologies</h2>
+                  <div class="skill-item">
+                    <div class="skill-name">
+                      <span>Node.js</span>
+                      <span>90%</span>
+                    </div>
+                    <div class="skill-bar">
+                      <div class="skill-level" data-level="90"></div>
+                    </div>
+                  </div>
+                  <div class="skill-item">
+                    <div class="skill-name">
+                      <span>Express</span>
+                      <span>87%</span>
+                    </div>
+                    <div class="skill-bar">
+                      <div class="skill-level" data-level="87"></div>
+                    </div>
+                  </div>
+                  <div class="skill-item">
+                    <div class="skill-name">
+                      <span>Go</span>
+                      <span>45%</span>
+                    </div>
+                    <div class="skill-bar">
+                      <div class="skill-level" data-level="45"></div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="skill-category">
+                  <h2>Databases</h2>
+                  <div class="skill-item">
+                    <div class="skill-name">
+                      <span>MongoDB</span>
+                      <span>80%</span>
+                    </div>
+                    <div class="skill-bar">
+                      <div class="skill-level" data-level="80"></div>
+                    </div>
+                  </div>
+                  <div class="skill-item">
+                    <div class="skill-name">
+                      <span>MySQL</span>
+                      <span>70%</span>
+                    </div>
+                    <div class="skill-bar">
+                      <div class="skill-level" data-level="70"></div>
+                    </div>
+                  </div>
+                  <div class="skill-item">
+                    <div class="skill-name">
+                      <span>Prisma</span>
+                      <span>80%</span>
+                    </div>
+                    <div class="skill-bar">
+                      <div class="skill-level" data-level="80"></div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="skill-category">
+                  <h2>Tools & Others</h2>
+                  <div class="skill-item">
+                    <div class="skill-name">
+                      <span>Docker</span>
+                      <span>80%</span>
+                    </div>
+                    <div class="skill-bar">
+                      <div class="skill-level" data-level="80"></div>
+                    </div>
+                  </div>
+                  <div class="skill-item">
+                    <div class="skill-name">
+                      <span>C++</span>
+                      <span>80%</span>
+                    </div>
+                    <div class="skill-bar">
+                      <div class="skill-level" data-level="80"></div>
+                    </div>
+                  </div>
+                  <div class="skill-item">
+                    <div class="skill-name">
+                      <span>MERN Stack</span>
+                      <span>90%</span>
+                    </div>
+                    <div class="skill-bar">
+                      <div class="skill-level" data-level="90"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="command-line">
+              <span class="prompt">user@portfolio:~$</span>
+              <span class="command"></span>
+              <span class="blinking-cursor"></span>
+            </div>
+          </div>
         </div>
-    </main>
+      </section>
+    </div>
 
     {{template "footer.html" .}}
-</body>
+    <script src="/static/js/skills.js"></script>
+  </body>
 </html>

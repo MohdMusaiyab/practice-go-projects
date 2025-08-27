@@ -1,0 +1,274 @@
+/* About Page Styles - Terminal Theme */
+.about-section {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 2rem 0;
+}
+
+.about-section h1 {
+    color: var(--ubuntu-orange);
+    font-size: 3rem;
+    margin-bottom: 2rem;
+    text-align: center;
+    font-weight: 500;
+    position: relative;
+}
+
+.about-section h1::after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(90deg, var(--ubuntu-orange), var(--ubuntu-purple));
+    margin: 0.5rem auto;
+    border-radius: 2px;
+}
+
+/* Terminal Container */
+.terminal-container {
+    background: var(--terminal-bg);
+    border-radius: 8px;
+    box-shadow: 0 8px 25px rgba(44, 0, 30, 0.3);
+    overflow: hidden;
+    margin: 2rem 0;
+    border: 2px solid rgba(0, 255, 0, 0.2);
+}
+
+.terminal-header {
+    background: linear-gradient(90deg, var(--ubuntu-orange), var(--ubuntu-purple));
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.terminal-controls {
+    display: flex;
+    gap: 8px;
+}
+
+.control-btn {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: opacity 0.2s;
+}
+
+.control-btn:hover {
+    opacity: 0.8;
+}
+
+.control-btn.close { background: #FF5F57; }
+.control-btn.minimize { background: #FFBD2E; }
+.control-btn.maximize { background: #28CA42; }
+
+.terminal-title {
+    color: white;
+    font-family: 'Ubuntu Mono', monospace;
+    font-weight: 700;
+    font-size: 14px;
+}
+
+.terminal-body {
+    padding: 30px;
+    font-family: 'Ubuntu Mono', monospace;
+    background: var(--terminal-bg);
+    color: var(--terminal-green);
+    min-height: 400px;
+}
+
+.command-line {
+    margin-bottom: 20px;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+}
+
+.prompt {
+    color: var(--terminal-green);
+    margin-right: 10px;
+}
+
+.command {
+    color: white;
+    margin-right: 10px;
+}
+
+.blinking-cursor {
+    background-color: var(--terminal-green);
+    width: 10px;
+    height: 18px;
+    display: inline-block;
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
+}
+
+/* About Content in Terminal Style */
+.about-content {
+    color: var(--terminal-green);
+    line-height: 1.8;
+    font-family: 'Ubuntu Mono', monospace;
+}
+
+.about-content h2 {
+    color: var(--ubuntu-orange);
+    font-size: 1.4rem;
+    margin: 2rem 0 1rem 0;
+    font-weight: 500;
+    position: relative;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.8s ease forwards;
+}
+
+.about-content h2::before {
+    content: '# ';
+    color: var(--terminal-green);
+    margin-right: 5px;
+}
+
+.about-content p {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: var(--terminal-green);
+    margin-bottom: 1.5rem;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.8s ease forwards;
+    text-align: justify;
+}
+
+.about-content p::before {
+    content: '> ';
+    color: var(--ubuntu-orange);
+    margin-right: 5px;
+}
+
+/* Animation delays for staggered effect */
+.about-content p:nth-of-type(1) { animation-delay: 0.2s; }
+.about-content h2:nth-of-type(1) { animation-delay: 0.4s; }
+.about-content p:nth-of-type(2) { animation-delay: 0.6s; }
+.about-content h2:nth-of-type(2) { animation-delay: 0.8s; }
+.about-content p:nth-of-type(3) { animation-delay: 1.0s; }
+.about-content h2:nth-of-type(3) { animation-delay: 1.2s; }
+.about-content p:nth-of-type(4) { animation-delay: 1.4s; }
+.about-content h2:nth-of-type(4) { animation-delay: 1.6s; }
+.about-content p:nth-of-type(5) { animation-delay: 1.8s; }
+
+/* Keyframe Animations */
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Scroll Animations */
+.scroll-animate {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease;
+}
+
+.scroll-animate.animate {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Interactive Elements */
+.about-content p:hover {
+    color: white;
+    transition: color 0.3s ease;
+    cursor: default;
+}
+
+.about-content h2:hover {
+    color: white;
+    transition: color 0.3s ease;
+    cursor: default;
+}
+
+/* Terminal typing effect container */
+.typing-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.typing-text {
+    color: var(--terminal-green);
+    font-family: 'Ubuntu Mono', monospace;
+    font-size: 16px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .about-section {
+        padding: 1.5rem 0;
+        margin: 0 1rem;
+    }
+    
+    .about-section h1 {
+        font-size: 2.5rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .terminal-body {
+        padding: 20px;
+    }
+    
+    .about-content h2 {
+        font-size: 1.2rem;
+        margin: 1.5rem 0 1rem 0;
+    }
+    
+    .about-content p {
+        font-size: 0.9rem;
+        text-align: left;
+    }
+    
+    .command-line {
+        font-size: 14px;
+        flex-wrap: wrap;
+    }
+}
+
+@media (max-width: 480px) {
+    .about-section {
+        margin: 0 0.5rem;
+    }
+    
+    .about-section h1 {
+        font-size: 2rem;
+    }
+    
+    .terminal-body {
+        padding: 15px;
+    }
+    
+    .terminal-header {
+        padding: 10px 15px;
+    }
+    
+    .terminal-title {
+        font-size: 12px;
+    }
+    
+    .about-content h2 {
+        font-size: 1.1rem;
+    }
+    
+    .about-content p {
+        font-size: 0.85rem;
+        margin-bottom: 1.2rem;
+    }
+    
+    .command-line {
+        font-size: 12px;
+    }
+}
