@@ -10,7 +10,7 @@ import (
 // DEVELOPMENT MODE TOGGLE
 // Set to true during development to reload templates on every request
 // Set to false for production to use template caching
-const DEVELOPMENT_MODE = true
+const DEVELOPMENT_MODE = false
 
 // Template for our pages
 var tmpl *template.Template
