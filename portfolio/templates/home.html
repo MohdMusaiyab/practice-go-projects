@@ -1,121 +1,128 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{{ .Title }} | Musaiyab - Full Stack Developer</title>
-    <link rel="stylesheet" href="/static/css/home.css">
-    <link rel="stylesheet" href="/static/css/header.css">
-    <link rel="stylesheet" href="/static/css/footer.css">
-    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&family=Ubuntu+Mono:wght@400;700&display=swap" rel="stylesheet">
-</head>
-<body>
+    <link rel="stylesheet" href="/static/css/home.css" />
+    <link rel="stylesheet" href="/static/css/header.css" />
+    <link rel="stylesheet" href="/static/css/footer.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&family=Ubuntu+Mono:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
     {{template "header.html" .}}
 
     <!-- Main Content -->
     <main class="main-content">
-        <div class="container">
-            <section class="hero-section">
-                <div class="terminal-window">
-                    <div class="terminal-header">
-                        <div class="terminal-controls">
-                            <span class="control-btn close"></span>
-                            <span class="control-btn minimize"></span>
-                            <span class="control-btn maximize"></span>
-                        </div>
-                        <div class="terminal-title">musaiyab@portfolio:~$</div>
-                    </div>
-                    <div class="terminal-content">
-                        <div class="command-line">
-                            <span class="prompt">user@portfolio:~$</span>
-                            <span class="command">whoami</span>
-                        </div>
-                        <div class="output">
-                            <h1> Mohd Musaiyab</h1>
-                            <p class="subtitle">Full Stack Developer | Linux Enthusiast</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
+      <div class="container">
+        <section class="hero-section">
+          <div class="terminal-window">
+            <div class="terminal-header">
+              <div class="terminal-controls">
+                <span class="control-btn close"></span>
+                <span class="control-btn minimize"></span>
+                <span class="control-btn maximize"></span>
+              </div>
+              <div class="terminal-title">musaiyab@portfolio:~$</div>
+            </div>
+            <div class="terminal-content">
+              <div class="command-line">
+                <span class="prompt">user@portfolio:~$</span>
+                <span class="command">whoami</span>
+              </div>
+              <div class="output">
+                <h1>Mohd Musaiyab</h1>
+                <p class="subtitle">Full Stack Developer</p>
+              </div>
+            </div>
+          </div>
+        </section>
 
-            <section class="intro-section">
-                <div class="intro-card">
-                    <h2>Hello, World! 👋</h2>
-                    <p>I'm a passionate developer who builds modern web applications with the reliability of Linux and the elegance of clean code. Welcome to my digital workspace!</p>
-                    <div class="tech-stack">
-                        <span class="tech-badge">JavaScript</span>
-                        <span class="tech-badge">Typescript</span>
-                        <span class="tech-badge">MERN</span>
-                        <span class="tech-badge">NEXT</span>
-                        <span class="tech-badge">GO</span>
-                        <span class="tech-badge">CPP</span>
-                    </div>
-                </div>
-            </section>
-        </div>
+        <section class="intro-section">
+          <div class="intro-card">
+            <h2>Hello, World! 👋</h2>
+            <p>
+              Full Stack Developer with hands-on experience in building dynamic,
+              user-focused web platforms. Skilled in React, Next.js, and backend
+              systems that bring ideas to life.
+            </p>
+            <div class="tech-stack">
+              <span class="tech-badge">JavaScript</span>
+              <span class="tech-badge">Typescript</span>
+              <span class="tech-badge">MERN</span>
+              <span class="tech-badge">NEXT</span>
+              <span class="tech-badge">GO</span>
+              <span class="tech-badge">CPP</span>
+            </div>
+          </div>
+        </section>
+      </div>
     </main>
 
     {{template "footer.html" .}}
-    
+
     <script>
-    // Initialize page animations
-    document.addEventListener('DOMContentLoaded', function() {
+      // Initialize page animations
+      document.addEventListener("DOMContentLoaded", function () {
         // Simple typewriter effect for command
-        const commandElement = document.querySelector('.command');
+        const commandElement = document.querySelector(".command");
         if (commandElement) {
-            const originalText = commandElement.textContent;
-            commandElement.textContent = '';
-            
-            let i = 0;
-            const typeInterval = setInterval(() => {
-                if (i < originalText.length) {
-                    commandElement.textContent += originalText.charAt(i);
-                    i++;
-                } else {
-                    clearInterval(typeInterval);
-                }
-            }, 100);
+          const originalText = commandElement.textContent;
+          commandElement.textContent = "";
+
+          let i = 0;
+          const typeInterval = setInterval(() => {
+            if (i < originalText.length) {
+              commandElement.textContent += originalText.charAt(i);
+              i++;
+            } else {
+              clearInterval(typeInterval);
+            }
+          }, 100);
         }
 
         // Fade in intro card
-        const introCard = document.querySelector('.intro-card');
+        const introCard = document.querySelector(".intro-card");
         if (introCard) {
-            introCard.style.opacity = '0';
-            introCard.style.transform = 'translateY(30px)';
-            introCard.style.transition = 'all 0.8s ease-out';
-            
-            setTimeout(() => {
-                introCard.style.opacity = '1';
-                introCard.style.transform = 'translateY(0)';
-            }, 500);
+          introCard.style.opacity = "0";
+          introCard.style.transform = "translateY(30px)";
+          introCard.style.transition = "all 0.8s ease-out";
+
+          setTimeout(() => {
+            introCard.style.opacity = "1";
+            introCard.style.transform = "translateY(0)";
+          }, 500);
         }
-        
+
         // Tech badge hover effects
-        document.addEventListener('click', function(e) {
-            if (e.target.classList.contains('tech-badge')) {
-                const badge = e.target;
-                const originalText = badge.textContent;
-                
-                badge.textContent = '✓ Selected';
-                badge.style.background = 'var(--terminal-green)';
-                badge.style.color = 'var(--ubuntu-dark)';
-                
-                setTimeout(() => {
-                    badge.textContent = originalText;
-                    badge.style.background = 'var(--ubuntu-orange)';
-                    badge.style.color = 'white';
-                }, 1000);
-            }
+        document.addEventListener("click", function (e) {
+          if (e.target.classList.contains("tech-badge")) {
+            const badge = e.target;
+            const originalText = badge.textContent;
+
+            badge.textContent = "✓ Selected";
+            badge.style.background = "var(--terminal-green)";
+            badge.style.color = "var(--ubuntu-dark)";
+
+            setTimeout(() => {
+              badge.textContent = originalText;
+              badge.style.background = "var(--ubuntu-orange)";
+              badge.style.color = "white";
+            }, 1000);
+          }
         });
 
         // Simple terminal blink effect
         setInterval(() => {
-            const prompt = document.querySelector('.prompt');
-            if (prompt) {
-                prompt.style.opacity = prompt.style.opacity === '0.5' ? '1' : '0.5';
-            }
+          const prompt = document.querySelector(".prompt");
+          if (prompt) {
+            prompt.style.opacity = prompt.style.opacity === "0.5" ? "1" : "0.5";
+          }
         }, 1000);
-    });
+      });
     </script>
-</body>
+  </body>
 </html>
