@@ -56,5 +56,6 @@ node_modules/
 public/
 dist/
 build/
+.env/
 
 # By default, keep go.mod and go.sum, but ignore everything that is built/generated
