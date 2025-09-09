@@ -10,25 +10,26 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
+// Register handles user signup
 func Register(c *gin.Context) {
 	var input dto.RegisterDTO
 
 	// Bind incoming JSON to DTO
 	if err := c.ShouldBindJSON(&input); err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		utils.ErrorResponse(c, http.StatusBadRequest, err.Error())
 		return
 	}
 
 	// Validate DTO
 	if err := utils.ValidateStruct(input); err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"validation_error": err.Error()})
+		utils.ErrorResponse(c, http.StatusBadRequest, err.Error())
 		return
 	}
 
 	// Hash password
 	hashedPassword, err := utils.HashPassword(input.Password)
 	if err != nil {
-		c.JSON(http.StatusInternalServerError, gin.H{"error": "failed to hash password"})
+		utils.ErrorResponse(c, http.StatusInternalServerError, "failed to hash password")
 		return
 	}
 
@@ -38,27 +39,30 @@ func Register(c *gin.Context) {
 		Email:    input.Email,
 		Password: hashedPassword,
 	}
+
+	// Save user to DB
 	db := config.GetDB()
 	if err := db.Create(&user).Error; err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"error": "email or username already exists"})
+		utils.ErrorResponse(c, http.StatusBadRequest, "email or username already exists")
 		return
 	}
 
-	c.JSON(http.StatusCreated, gin.H{"message": "user registered successfully"})
+	utils.SuccessResponse(c, "user registered successfully", nil)
 }
 
+// Login handles user authentication
 func Login(c *gin.Context) {
 	var input dto.LoginDTO
 
 	// Bind incoming JSON to DTO
 	if err := c.ShouldBindJSON(&input); err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		utils.ErrorResponse(c, http.StatusBadRequest, err.Error())
 		return
 	}
 
 	// Validate DTO
 	if err := utils.ValidateStruct(input); err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"validation_error": err.Error()})
+		utils.ErrorResponse(c, http.StatusBadRequest, err.Error())
 		return
 	}
 
@@ -66,22 +70,23 @@ func Login(c *gin.Context) {
 	var user models.User
 	db := config.GetDB()
 	if err := db.Where("email = ?", input.Email).First(&user).Error; err != nil {
-		c.JSON(http.StatusUnauthorized, gin.H{"error": "invalid credentials"})
+		utils.ErrorResponse(c, http.StatusUnauthorized, "invalid credentials")
 		return
 	}
 
 	// Check password
 	if !utils.CheckPasswordHash(input.Password, user.Password) {
-		c.JSON(http.StatusUnauthorized, gin.H{"error": "invalid credentials"})
+		utils.ErrorResponse(c, http.StatusUnauthorized, "invalid credentials")
 		return
 	}
 
 	// Generate JWT token
 	token, err := utils.GenerateJWT(user.ID, user.Email)
 	if err != nil {
-		c.JSON(http.StatusInternalServerError, gin.H{"error": "failed to generate token"})
+		utils.ErrorResponse(c, http.StatusInternalServerError, "failed to generate token")
 		return
 	}
 
-	c.JSON(http.StatusOK, gin.H{"token": token})
+	// Respond with token inside "data"
+	utils.SuccessResponse(c, "login successful", gin.H{"token": token})
 }

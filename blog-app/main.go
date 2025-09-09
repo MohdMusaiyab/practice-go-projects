@@ -15,6 +15,7 @@ func main() {
 
 	// Register auth routes
 	routes.AuthRoutes(router)
+	routes.TestRoutes(router) // ✅ add test route
 
 	// Start server
 	router.Run(":" + "8080")
