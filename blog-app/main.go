@@ -1,9 +1,9 @@
 package main
 
 import (
-	"github.com/gin-gonic/gin"
 	"github.com/MohdMusaiyab/blog-app/config"
 	"github.com/MohdMusaiyab/blog-app/routes"
+	"github.com/gin-gonic/gin"
 )
 
 func main() {
@@ -15,6 +15,8 @@ func main() {
 
 	// Register auth routes
 	routes.AuthRoutes(router)
+	routes.UserRoutes(router)
+	routes.PostRoutes(router)
 	routes.TestRoutes(router) // ✅ add test route
 
 	// Start server
