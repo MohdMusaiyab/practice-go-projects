@@ -17,6 +17,7 @@ func main() {
 	routes.AuthRoutes(router)
 	routes.UserRoutes(router)
 	routes.PostRoutes(router)
+	routes.CommentRoutes(router)
 	routes.TestRoutes(router) // ✅ add test route
 
 	// Start server
